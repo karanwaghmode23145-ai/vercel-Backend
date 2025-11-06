@@ -4,17 +4,27 @@ import {
   createProduct,
   getProductById,
   getRelatedProducts,
-  addReview, // ✅ add this
+  addProductReview,
+  
 } from "../controllers/product.controller.js";
 
 const router = express.Router();
 
+
+// products view
 router.get("/", getAllProducts);
+
+//porduct create krto
 router.post("/", createProduct);
+
+//product by id
 router.get("/:id", getProductById);
+
+// 🟢 Get Related Products by Category
 router.get("/related/:category/:id", getRelatedProducts);
 
-// ✅ Add Review route
-router.post("/:id/review", addReview);
+// 🆕 Review route
+router.post("/:id/review", addProductReview);
+
 
 export default router;

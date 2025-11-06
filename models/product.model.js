@@ -2,9 +2,10 @@ import mongoose from "mongoose";
 
 // Review schema
 const reviewSchema = new mongoose.Schema({
-  user: { type: String, required: true },
+  user: { type: String, required: false }, // 🔹 Optional (no login yet)
   rating: { type: Number, required: true },
   comment: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
 });
 
 // Product schema
@@ -17,7 +18,7 @@ const productSchema = new mongoose.Schema({
   rating: { type: Number, default: 0 },
   reviewsCount: { type: Number, default: 0 },
   reviews: { type: [reviewSchema], default: [] },
-});
+})
 
 const Product = mongoose.model("Product", productSchema);
 export default Product;
